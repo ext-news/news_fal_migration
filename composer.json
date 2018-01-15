@@ -1,0 +1,36 @@
+{
+	"name": "georgringer/news-fal-migration",
+	"type": "typo3-cms-extension",
+	"description": "Extraction of FAL migration of EXT:news to separate extension",
+	"keywords": [
+		"TYPO3",
+		"extension",
+		"article",
+		"news",
+		"fal"
+	],
+	"homepage": "http://montagmorgen.at",
+	"authors": [
+		{
+			"name": "Georg Ringer",
+			"role": "Developer",
+			"homepage": "http://montagmorgen.at"
+		}
+	],
+	"license": [
+		"GPL-2.0+"
+	],
+	"require": {
+		"typo3/cms-core": "^7.6.13 || >=8.5.0 <9",
+		"georgringer/news": "^5.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"GeorgRinger\\NewsFalMigration\\": "Classes"
+		}
+	},
+	"replace": {
+		"news_fal_migration": "self.version",
+		"typo3-ter/news-fal-migration": "self.version"
+	}
+}
