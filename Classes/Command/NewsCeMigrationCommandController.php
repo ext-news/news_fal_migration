@@ -64,6 +64,21 @@ class NewsCeMigrationCommandController extends CommandController
         return $this->generateOutput();
     }
 
+    public function sortingCommand() {
+
+      $rows = $this->databaseConnection->exec_SELECTgetRows('*', 'tx_news_domain_model_news_ttcontent_mm', '1=1');
+
+foreach ($rows as $row) {
+    $this->databaseConnection->exec_UPDATEquery(
+        'tt_content',
+        'deleted=0 AND uid=' . $row['uid_foreign'] . ' AND tx_news_related_news=' . $row['uid_local'],
+        [
+            'sorting' => $row['sorting']
+        ]
+    );
+}
+    }
+
     /**
      * news records got a relation to content elements and the relation uses now a mm query
      * This method allows to update the mm table to got everything in sync again
